@@ -1,0 +1,7 @@
+{% load mptt_tags %}
+
+{% for category in category_family %}
+
+    <a href="{% url 'product_categories_list' cat=category.url_title %}">/ {{ category.title }}</a>
+
+{% endfor %}

@@ -1,0 +1,48 @@
+{% load poll_extras %}
+
+<h2> نظرات ({{ review_count }})</h2>
+<ul class="media-list">
+    {% for review in reviews %}
+        <li class="media" id="single_review_box_{{ review.id }}">
+            <a class="pull-right" href="#">
+                <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+            </a>
+            <div class="media-body">
+                <ul class="single-post-meta">
+                    <li><i class="fa fa-user"></i>{{ review.user }}</li>
+                    <li><i class="fa fa-clock-o"></i> {{ review.create_date | time }}</li>
+                    <li>
+                        <i class="fa fa-calendar"></i> {{ review.create_date|show_jalali_date }}
+                    </li>
+                </ul>
+                <p>
+                    {{ review.text }}
+                </p>
+                <a class="btn btn-primary" onclick="fillParentId({{ review.id }})"><i
+                        class="fa fa-reply"></i>پاسـخ</a>
+            </div>
+        </li>
+
+        {% for review in reviews.productreviewsset.all %}
+            <li class="media second-media" id="single_review_box_{{ review.id }}">
+                <a class="pull-right" href="#">
+                    <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                </a>
+                <div class="media-body">
+                    <ul class="single-post-meta">
+                        <li><i class="fa fa-user"></i>{{ review.user }}</li>
+                        <li><i class="fa fa-clock-o"></i> {{ review.create_date | time }}
+                        </li>
+                        <li>
+                            <i class="fa fa-calendar"></i> {{ review.create_date|show_jalali_date }}
+                        </li>
+                    </ul>
+                    <p>
+                        {{ review.text }}
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    {% endfor %}
+
+</ul>

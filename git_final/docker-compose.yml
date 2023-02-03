@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    command: python manage.py 0.0.0.0:8000
+    volumes:
+      - "/var/lib/docker/volumes/nginx_django_static/_data/:/home/app/web/staticfiles"
+      - "/var/lib/docker/volumes/nginx_django_media/_data/:/home/app/web/media"
+    ports:
+      - 8000:8000

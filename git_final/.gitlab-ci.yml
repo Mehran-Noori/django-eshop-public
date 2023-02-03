@@ -1,0 +1,11 @@
+stages:
+    - deploy
+
+image: gitlab/dind
+
+deployment:
+    stage: deploy
+    script:
+        - docker-compose down --remove-orphans
+        - docker-compose build
+        - docker-compose up -d

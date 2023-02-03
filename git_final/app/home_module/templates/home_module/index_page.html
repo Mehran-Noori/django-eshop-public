@@ -1,0 +1,203 @@
+{% extends 'shared/_layout.html' %}
+{% load thumbnail %}
+{% load poll_extras %}
+
+{% block title %}
+    فروشگاه | صفحه اصلی
+{% endblock %}
+
+{% block content %}
+    <section id="slider"><!--slider-->
+        <div class="custom-container">
+            <div class="row">
+
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    {% comment %} <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        </ol>{% endcomment %}
+
+                    <div class="carousel-inner">
+
+                        {% for slider in sliders %}
+                            <div class="item  {% if forloop.first %} active {% endif %}">
+                                <div class="">
+                                    <img src="{{ slider.image.url }}" class=" girl"
+                                         alt=""/>
+                                </div>
+                                {#                                    <div class="col-sm-6">#}
+                                {#                                        <h2>{{ slider.title }}</h2>#}
+                                {#                                        <p>{{ slider.description }}</p>#}
+                                {#                                        <a href="{{ slider.url }}"#}
+                                {#                                           target="_blank"#}
+                                {#                                           class="btn btn-default get">{{ slider.url_title }}</a>#}
+                                {#                                    </div>#}
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel control-left hidden-xs"
+                       data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel control-right hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </section><!--/slider-->
+
+
+    <section>
+        <div class="recommended_items"><!--NewProduct_items-->
+            <h2 class="title text-center">جدیدترین محصولات</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-11 col-md-12 col-centered">
+
+                        <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi"
+                             data-interval="18000">
+                            <div class="carousel-inner ">
+
+                                {% for product in latest_products %}
+                                    <div class="item  {% if forloop.first %} active {% endif %}">
+
+                                        <div class="carousel-col  ">
+                                            <div class="">
+                                                {% include 'product_module/includes/product_item_partial.html' %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+
+                            <!-- Controls -->
+                            <div class="left carousel-control">
+                                <a href="#carousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </div>
+                            <div class="right carousel-control">
+                                <a href="#carousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!--/NewProduct_items-->
+
+
+            <div class="col-sm-12 ">
+                <div class="features_items"><!--RetailSale_items-->
+                    <h2 class="title text-center">پربازدیدترین محصولات</h2>
+                    <div class="container">
+                        <div class="row">
+                        <div class="col-xs-11 col-md-12 col-centered">
+
+                            <div id="carousel2" class="carousel slide" data-ride="carousel" data-type="multi"
+                                 data-interval="20000">
+                                <div class="carousel-inner ">
+
+                                    {% for product in most_visit_products %}
+                                        <div class="item  {% if forloop.first %} active {% endif %}">
+
+                                            <div class="carousel-col  ">
+                                                <div class="">
+                                                    {% include 'product_module/includes/product_item_partial.html' %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+
+                                </div>
+
+                                <!-- Controls -->
+                                <div class="left carousel-control">
+                                    <a href="#carousel2" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </div>
+                                <div class="right carousel-control">
+                                    <a href="#carousel2" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!--RetailSale_items-->
+
+
+        <div class="container">
+            <div class="col-sm-12 ">
+                <div class="features_items"><!--RetailSale_items-->
+                    <h2 class="title text-center">پر فروش ترین محصولات</h2>
+                    <div class="row">
+                        <div class="col-xs-11 col-md-12 col-centered">
+
+                            <div id="carousel3" class="carousel slide" data-ride="carousel" data-type="multi"
+                                 data-interval="22000">
+                                <div class="carousel-inner ">
+
+                                    {% for product in most_bought_products %}
+                                        <div class="item  {% if forloop.first %} active {% endif %}">
+
+                                            <div class="carousel-col  ">
+                                                <div class="">
+                                                    {% include 'product_module/includes/product_item_partial.html' %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+
+                                </div>
+
+                                <!-- Controls -->
+                                <div class="left carousel-control">
+                                    <a href="#carousel3" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left"
+                                                      aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </div>
+                                <div class="right carousel-control">
+                                    <a href="#carousel3" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right"
+                                                      aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--RetailSale_items-->
+            </div>
+
+    </section>
+
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% load thumbnail %}
+{% load poll_extras %}
+
+<div class="col-md-{{ col_size }}">
+    <a href="{{ product.get_absolute_url }}">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo">
+                    <div class="full-img">
+
+                        {% if product.image %}
+                            {% thumbnail product.image "300x250" quality=90 as im %}
+                                <img src="{{ im.url }}" alt="{{ product.image.alt_text }}" class="full-img">
+                            {% endthumbnail %}
+                        {% else %}
+                            <img src="/static/images/shop/product.jpg" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="product-text-2 text-center padding-top-10">
+
+                        <p><br><br>{{ product.title }}<br><br></p>
+                    </div>
+                    <div class="price-tag left">
+
+
+                        <p class="text ">{{ product.price|three_digits_currency }}</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </a>
+</div>
